@@ -22,6 +22,30 @@ const getState = ({ getStore, setStore }) => {
 						fetch("https://assets.breatheco.de/apis/fake/contact/agenda/george_agenda")
 							.then(response => response.json())
 							.then(data => setStore({ agenda: data }));
+						console.log("created");
+					});
+			},
+			editContact: (name, address, phone, email, id, history) => {
+				let store = getStore();
+				fetch("https://assets.breatheco.de/apis/fake/contact/" + id, {
+					method: "put",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({
+						agenda_slug: "george_agenda",
+						full_name: name,
+						email: email,
+						phone: phone,
+						address: address
+					})
+				})
+					.then(response => response.json())
+					.then(() => {
+						fetch("https://assets.breatheco.de/apis/fake/contact/agenda/george_agenda")
+							.then(response => response.json())
+							.then(data => {
+								console.log(data);
+								setStore({ agenda: data });
+							});
 					});
 			}
 
