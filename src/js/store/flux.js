@@ -47,6 +47,19 @@ const getState = ({ getStore, setStore }) => {
 								setStore({ agenda: data });
 							});
 					});
+			},
+			deleteContact: id => {
+				const store = getStore();
+				fetch("https://assets.breatheco.de/apis/fake/contact/" + id, {
+					method: "delete",
+					headers: { "Content-Type": "aplication/json" }
+				}).then(() => {
+					fetch("https://assets.breatheco.de/apis/fake/contact/agenda/george_agenda")
+						.then(response => response.json())
+						.then(data => {
+							setStore({ agenda: data });
+						});
+				});
 			}
 
 			//(Arrow) Functions that update the Store
