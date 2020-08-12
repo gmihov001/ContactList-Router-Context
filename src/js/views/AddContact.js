@@ -28,7 +28,12 @@ export const AddContact = () => {
 								</div>
 								<div className="form-group">
 									<label>Email</label>
-									<input type="email" className="form-control" placeholder="Enter email" />
+                                    <input 
+                                        type="email" 
+                                        className="form-control" 
+                                        placeholder="Enter email"
+                                        onChange={e=>setContact({...contact, email: e.target.value})}
+                                    />
 								</div>
 								<div className="form-group">
 									<label>Phone</label>
