@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const AddContact = () => {
+    const [contact, setContact] = useState({
+        name: null,
+        address: null,
+        phone: null,
+        email:  null
+    });
 	return (
 		<Context.Consumer>
 			{(store, actions) => {
@@ -13,7 +19,12 @@ export const AddContact = () => {
 							<form>
 								<div className="form-group">
 									<label>Full Name</label>
-									<input type="text" className="form-control" placeholder="Full Name" />
+                                    <input 
+                                        type="text" 
+                                        className="form-control" 
+                                        placeholder="Full Name"
+                                        onChange={e=>setContact({...contact, name: e.target.value})}    
+                                    />
 								</div>
 								<div className="form-group">
 									<label>Email</label>
