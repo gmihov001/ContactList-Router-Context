@@ -26,8 +26,7 @@ const injectContext = PassedComponent => {
 				.then(response => response.json())
 				.then(data => {
 					let { store } = state;
-					//store.contacts = data;
-					this.setState({ store: { ...store, agenda: data } });
+					setState({ store: { ...store, agenda: data } });
 				});
 		}, []);
 
