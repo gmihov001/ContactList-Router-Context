@@ -10,10 +10,10 @@ export const AddContact = () => {
 		email: null
 	});
 	return (
-		<Context.Consumer>
-			{({ store, actions }) => {
-				return (
-					<div className="container">
+		<div className="container">
+			<Context.Consumer>
+				{({ store, actions }) => {
+					return (
 						<div>
 							<h1 className="text-center mt-5">Add a new contact</h1>
 							<form>
@@ -74,9 +74,9 @@ export const AddContact = () => {
 								</Link>
 							</form>
 						</div>
-					</div>
-				);
-			}}
-		</Context.Consumer>
+					);
+				}}
+			</Context.Consumer>
+		</div>
 	);
 };

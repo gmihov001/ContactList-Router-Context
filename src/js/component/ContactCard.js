@@ -2,11 +2,11 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import MikePhoto from "../../img/m101.jpg";
-import { AppContext } from "../store/appContext";
+import { Context } from "../store/appContext";
 import { Modal } from "./Modal.js";
 import { Link } from "react-router-dom";
 
-class ContactCard extends React.Component {
+export class ContactCard extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -16,7 +16,7 @@ class ContactCard extends React.Component {
 
 	render() {
 		return (
-			<AppContext.Consumer>
+			<Context.Consumer>
 				{({ store, actions }) => {
 					return (
 						<li className="list-group-item">
@@ -68,7 +68,7 @@ class ContactCard extends React.Component {
 						</li>
 					);
 				}}
-			</AppContext.Consumer>
+			</Context.Consumer>
 		);
 	}
 }
@@ -95,7 +95,6 @@ ContactCard.propTypes = {
 ContactCard.defaultProps = {
 	onDelete: null
 };
-export default ContactCard;
 
 // import React, { useState, useEffect } from "react";
 // import { withRouter } from "react-router-dom";
