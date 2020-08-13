@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Context } from "../store/appContext";
+import { Context, Consumer } from "../store/appContext";
 
 export const AddContact = () => {
 	const [contact, setContact] = useState({
@@ -11,7 +11,7 @@ export const AddContact = () => {
 	});
 	return (
 		<Context.Consumer>
-			{(store, actions) => {
+			{({ store, actions }) => {
 				return (
 					<div className="container">
 						<div>
@@ -53,9 +53,22 @@ export const AddContact = () => {
 										onChange={e => setContact({ ...contact, address: e.target.value })}
 									/>
 								</div>
-								<button type="button" className="btn btn-primary form-control">
-									SAVE
-								</button>
+								<Link to="/">
+									<button
+										type="button"
+										className="btn btn-primary form-control"
+										disabled={!contact.name && !contact.address && !contact.phone && !contact.email}
+										onClick={() =>
+											actions.addContact(
+												contact.name,
+												contact.address,
+												contact.phone,
+												contact.email
+											)
+										}>
+										SAVE
+									</button>
+								</Link>
 								<Link className="mt-3 w-100 text-center" to="/">
 									or get back to contacts
 								</Link>

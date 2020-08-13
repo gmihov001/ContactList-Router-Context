@@ -25,8 +25,13 @@ const injectContext = PassedComponent => {
 			fetch("https://assets.breatheco.de/apis/fake/contact/agenda/george_agenda")
 				.then(response => response.json())
 				.then(data => {
-					let { store } = state;
-					setState({ store: { ...store, agenda: data } });
+					//let { store } = state;
+					setState({
+						...state,
+						store: {
+							agenda: data
+						}
+					});
 				});
 		}, []);
 

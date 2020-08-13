@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
 import { ContactCard } from "../component/ContactCard.js";
 import { Modal } from "../component/Modal";
+import { Context, Consumer } from "../store/appContext";
 
 export const Contacts = () => {
 	const [state, setState] = useState({
@@ -19,10 +19,26 @@ export const Contacts = () => {
 				</p>
 				<div id="contacts" className="panel-collapse collapse show" aria-expanded="true">
 					<ul className="list-group pull-down" id="contact-list">
-						<ContactCard onDelete={() => setState({ showModal: true })} />
-						<ContactCard />
-						<ContactCard />
-						<ContactCard />
+						<Context.Consumer>
+							{({ store, actions }) => {
+								return (
+									store.agenda &&
+									store.agenda.map((item, i) => {
+										return (
+											<ContactCard
+												key={i}
+												id={item.id}
+												name={item.full_name}
+												email={item.email}
+												phone={item.phone}
+												address={item.address}
+												onDelete={() => setState({ showModal: true })}
+											/>
+										);
+									})
+								);
+							}}
+						</Context.Consumer>
 					</ul>
 				</div>
 			</div>
