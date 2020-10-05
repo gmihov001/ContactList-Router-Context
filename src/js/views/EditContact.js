@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const AddContact = () => {
+export const EditContact = () => {
 	const [contact, setContact] = useState({
 		name: null,
 		address: null,
@@ -57,9 +57,9 @@ export const AddContact = () => {
 									<button
 										type="button"
 										className="btn btn-primary form-control"
-										disabled={!contact.name && !contact.address && !contact.phone && !contact.email}
+										disabled={!contact.name || !contact.address || !contact.phone || !contact.email}
 										onClick={() =>
-											actions.addContact(
+											actions.editContact(
 												contact.name,
 												contact.address,
 												contact.phone,
