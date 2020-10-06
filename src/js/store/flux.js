@@ -49,7 +49,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			deleteContact: id => {
-				const store = getStore();
 				fetch("https://assets.breatheco.de/apis/fake/contact/" + id, {
 					method: "delete",
 					headers: { "Content-Type": "aplication/json" }
