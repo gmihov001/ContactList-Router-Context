@@ -11,7 +11,17 @@ export const EditContact = props => {
 		email: null
 	});
 	const { store, actions } = useContext(Context);
-	var contact = store.agenda.filter(item => item.id == props.match.params.id);
+
+	useEffect(() => {
+		var contact = store.agenda.filter(item => item.id == props.match.params.id);
+		setUpdatedContact({
+			name: contact.full_name,
+			address: contact.address,
+			phone: contact.phone,
+			email: contact.email
+		});
+	}, []);
+
 	console.log(contact);
 
 	return (
@@ -24,7 +34,7 @@ export const EditContact = props => {
 						<input
 							type="text"
 							className="form-control"
-							placeholder={contact[0].full_name}
+							//placeholder={contact[0].full_name}
 							onChange={e => setUpdatedContact({ ...contact, name: e.target.value })}
 						/>
 					</div>
@@ -33,7 +43,7 @@ export const EditContact = props => {
 						<input
 							type="email"
 							className="form-control"
-							placeholder="Enter email"
+							//placeholder={contact[0].email}
 							onChange={e => setUpdatedContact({ ...contact, email: e.target.value })}
 						/>
 					</div>
@@ -42,7 +52,7 @@ export const EditContact = props => {
 						<input
 							type="phone"
 							className="form-control"
-							placeholder="Enter phone"
+							//placeholder={contact[0].phone}
 							onChange={e => setUpdatedContact({ ...contact, phone: e.target.value })}
 						/>
 					</div>
@@ -51,7 +61,7 @@ export const EditContact = props => {
 						<input
 							type="text"
 							className="form-control"
-							placeholder="Enter address"
+							//placeholder={contact[0].address}
 							onChange={e => setUpdatedContact({ ...contact, address: e.target.value })}
 						/>
 					</div>
@@ -59,7 +69,6 @@ export const EditContact = props => {
 						<button
 							type="button"
 							className="btn btn-primary form-control"
-							disabled={!contact.name || !contact.address || !contact.phone || !contact.email}
 							onClick={() =>
 								actions.editContact(contact.name, contact.address, contact.phone, contact.email)
 							}>
