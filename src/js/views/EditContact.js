@@ -33,7 +33,7 @@ export const EditContact = props => {
 						<input
 							type="email"
 							className="form-control"
-							value={updatedContact.name}
+							value={updatedContact.email}
 							onChange={e => setUpdatedContact({ ...contact, email: e.target.value })}
 						/>
 					</div>
@@ -42,7 +42,7 @@ export const EditContact = props => {
 						<input
 							type="phone"
 							className="form-control"
-							value={updatedContact.name}
+							value={updatedContact.phone}
 							onChange={e => setUpdatedContact({ ...contact, phone: e.target.value })}
 						/>
 					</div>
@@ -51,7 +51,7 @@ export const EditContact = props => {
 						<input
 							type="text"
 							className="form-control"
-							value={updatedContact.name}
+							value={updatedContact.address}
 							onChange={e => setUpdatedContact({ ...contact, address: e.target.value })}
 						/>
 					</div>
@@ -60,7 +60,12 @@ export const EditContact = props => {
 							type="button"
 							className="btn btn-primary form-control"
 							onClick={() =>
-								actions.editContact(contact.name, contact.address, contact.phone, contact.email)
+								actions.editContact(
+									updatedContact.name,
+									updatedContact.address,
+									updatedContact.phone,
+									updatedContact.email
+								)
 							}>
 							SAVE
 						</button>
