@@ -5,13 +5,16 @@ import PropTypes from "prop-types";
 
 export const EditContact = props => {
 	const { store, actions } = useContext(Context);
+
 	var contact = store.agenda.filter(item => item.id == props.match.params.id);
 	console.log(contact);
+
 	const [updatedContact, setUpdatedContact] = useState({
 		name: contact[0].full_name,
 		address: contact[0].address,
 		phone: contact[0].phone,
-		email: contact[0].email
+		email: contact[0].email,
+		id: contact[0].id
 	});
 
 	return (
@@ -25,7 +28,7 @@ export const EditContact = props => {
 							type="text"
 							className="form-control"
 							value={updatedContact.name}
-							onChange={e => setUpdatedContact({ ...contact, name: e.target.value })}
+							onChange={e => setUpdatedContact({ ...updatedContact, name: e.target.value })}
 						/>
 					</div>
 					<div className="form-group">
@@ -34,7 +37,7 @@ export const EditContact = props => {
 							type="email"
 							className="form-control"
 							value={updatedContact.email}
-							onChange={e => setUpdatedContact({ ...contact, email: e.target.value })}
+							onChange={e => setUpdatedContact({ ...updatedContact, email: e.target.value })}
 						/>
 					</div>
 					<div className="form-group">
@@ -43,7 +46,7 @@ export const EditContact = props => {
 							type="phone"
 							className="form-control"
 							value={updatedContact.phone}
-							onChange={e => setUpdatedContact({ ...contact, phone: e.target.value })}
+							onChange={e => setUpdatedContact({ ...updatedContact, phone: e.target.value })}
 						/>
 					</div>
 					<div className="form-group">
@@ -52,7 +55,7 @@ export const EditContact = props => {
 							type="text"
 							className="form-control"
 							value={updatedContact.address}
-							onChange={e => setUpdatedContact({ ...contact, address: e.target.value })}
+							onChange={e => setUpdatedContact({ ...updatedContact, address: e.target.value })}
 						/>
 					</div>
 					<Link to="/">
@@ -64,7 +67,8 @@ export const EditContact = props => {
 									updatedContact.name,
 									updatedContact.address,
 									updatedContact.phone,
-									updatedContact.email
+									updatedContact.email,
+									updatedContact.id
 								)
 							}>
 							SAVE

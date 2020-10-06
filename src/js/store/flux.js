@@ -25,7 +25,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("created");
 					});
 			},
-			editContact: (name, address, phone, email, id, history) => {
+			editContact: (name, address, phone, email, id) => {
 				let store = getStore();
 				fetch("https://assets.breatheco.de/apis/fake/contact/" + id, {
 					method: "put",
