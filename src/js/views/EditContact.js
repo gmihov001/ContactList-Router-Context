@@ -1,15 +1,18 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import PropTypes from "prop-types";
 
-export const EditContact = () => {
-	const [contact, setContact] = useState({
+export const EditContact = props => {
+	const [updatedContact, setUpdatedContact] = useState({
 		name: null,
 		address: null,
 		phone: null,
 		email: null
 	});
-	const { actions } = useContext(Context);
+	const { store, actions } = useContext(Context);
+	var contact = store.agenda.filter(item => item.id == props.match.params.id);
+	console.log(contact);
 
 	return (
 		<div className="container">
@@ -21,8 +24,8 @@ export const EditContact = () => {
 						<input
 							type="text"
 							className="form-control"
-							placeholder="Full Name"
-							onChange={e => setContact({ ...contact, name: e.target.value })}
+							placeholder={contact[0].full_name}
+							onChange={e => setUpdatedContact({ ...contact, name: e.target.value })}
 						/>
 					</div>
 					<div className="form-group">
@@ -31,7 +34,7 @@ export const EditContact = () => {
 							type="email"
 							className="form-control"
 							placeholder="Enter email"
-							onChange={e => setContact({ ...contact, email: e.target.value })}
+							onChange={e => setUpdatedContact({ ...contact, email: e.target.value })}
 						/>
 					</div>
 					<div className="form-group">
@@ -40,7 +43,7 @@ export const EditContact = () => {
 							type="phone"
 							className="form-control"
 							placeholder="Enter phone"
-							onChange={e => setContact({ ...contact, phone: e.target.value })}
+							onChange={e => setUpdatedContact({ ...contact, phone: e.target.value })}
 						/>
 					</div>
 					<div className="form-group">
@@ -49,7 +52,7 @@ export const EditContact = () => {
 							type="text"
 							className="form-control"
 							placeholder="Enter address"
-							onChange={e => setContact({ ...contact, address: e.target.value })}
+							onChange={e => setUpdatedContact({ ...contact, address: e.target.value })}
 						/>
 					</div>
 					<Link to="/">
@@ -70,4 +73,8 @@ export const EditContact = () => {
 			</div>
 		</div>
 	);
+};
+
+EditContact.propTypes = {
+	match: PropTypes.object
 };
