@@ -1,28 +1,18 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 
 export const EditContact = props => {
-	const [updatedContact, setUpdatedContact] = useState({
-		name: null,
-		address: null,
-		phone: null,
-		email: null
-	});
 	const { store, actions } = useContext(Context);
-
-	useEffect(() => {
-		var contact = store.agenda.filter(item => item.id == props.match.params.id);
-		setUpdatedContact({
-			name: contact.full_name,
-			address: contact.address,
-			phone: contact.phone,
-			email: contact.email
-		});
-	}, []);
-
+	var contact = store.agenda.filter(item => item.id == props.match.params.id);
 	console.log(contact);
+	const [updatedContact, setUpdatedContact] = useState({
+		name: contact[0].full_name,
+		address: contact[0].address,
+		phone: contact[0].phone,
+		email: contact[0].email
+	});
 
 	return (
 		<div className="container">
@@ -34,7 +24,7 @@ export const EditContact = props => {
 						<input
 							type="text"
 							className="form-control"
-							//placeholder={contact[0].full_name}
+							value={updatedContact.name}
 							onChange={e => setUpdatedContact({ ...contact, name: e.target.value })}
 						/>
 					</div>
