@@ -30,6 +30,7 @@ export const EditContact = props => {
 						<label>Full Name</label>
 						<input
 							type="text"
+							name="name"
 							className="form-control"
 							value={updatedContact.name}
 							onChange={handleChange}
