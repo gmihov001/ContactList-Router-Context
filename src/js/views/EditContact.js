@@ -50,9 +50,10 @@ export const EditContact = props => {
 						<label>Phone</label>
 						<input
 							type="phone"
+							name="phone"
 							className="form-control"
 							value={updatedContact.phone}
-							onChange={e => setUpdatedContact({ ...updatedContact, phone: e.target.value })}
+							onChange={handleChange}
 						/>
 					</div>
 					<div className="form-group">
