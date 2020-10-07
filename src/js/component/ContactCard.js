@@ -38,7 +38,7 @@ export class ContactCard extends React.Component {
 										<button
 											className="btn"
 											onClick={() => {
-												actions.deleteContact(this.props.id);
+												this.props.onDelete();
 											}}>
 											<i className="fas fa-trash-alt" />
 										</button>

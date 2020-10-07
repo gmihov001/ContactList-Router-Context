@@ -8,6 +8,7 @@ export const Contacts = () => {
 	const [state, setState] = useState({
 		showModal: false
 	});
+	var id = "";
 
 	return (
 		<div className="container">
@@ -24,6 +25,7 @@ export const Contacts = () => {
 								return (
 									store.agenda &&
 									store.agenda.map((item, i) => {
+										id = i;
 										return (
 											<ContactCard
 												key={i}
@@ -42,7 +44,7 @@ export const Contacts = () => {
 					</ul>
 				</div>
 			</div>
-			<Modal show={state.showModal} onClose={() => setState({ showModal: false })} />
+			<Modal show={state.showModal} id={id} onClose={() => setState({ showModal: false })} />
 		</div>
 	);
 };
