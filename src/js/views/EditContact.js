@@ -60,9 +60,10 @@ export const EditContact = props => {
 						<label>Address</label>
 						<input
 							type="text"
+							name="address"
 							className="form-control"
 							value={updatedContact.address}
-							onChange={e => setUpdatedContact({ ...updatedContact, address: e.target.value })}
+							onChange={handleChange}
 						/>
 					</div>
 					<Link to="/">
