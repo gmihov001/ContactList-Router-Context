@@ -17,6 +17,10 @@ export const EditContact = props => {
 		id: contact[0].id
 	});
 
+	const handleChange = e => {
+		setUpdatedContact({ ...updatedContact, [e.target.name]: e.target.value });
+	};
+
 	return (
 		<div className="container">
 			<div>
@@ -28,7 +32,7 @@ export const EditContact = props => {
 							type="text"
 							className="form-control"
 							value={updatedContact.name}
-							onChange={e => setUpdatedContact({ ...updatedContact, name: e.target.value })}
+							onChange={handleChange}
 						/>
 					</div>
 					<div className="form-group">
