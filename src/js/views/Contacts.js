@@ -6,9 +6,9 @@ import { Context, Consumer } from "../store/appContext";
 
 export const Contacts = () => {
 	const [state, setState] = useState({
-		showModal: false
+		showModal: false,
+		id: null
 	});
-	var id = "";
 
 	return (
 		<div className="container">
@@ -25,7 +25,6 @@ export const Contacts = () => {
 								return (
 									store.agenda &&
 									store.agenda.map((item, i) => {
-										id = i;
 										return (
 											<ContactCard
 												key={i}
@@ -34,7 +33,7 @@ export const Contacts = () => {
 												email={item.email}
 												phone={item.phone}
 												address={item.address}
-												onDelete={() => setState({ showModal: true })}
+												onDelete={() => setState({ showModal: true, id: item.id })}
 											/>
 										);
 									})
@@ -44,7 +43,7 @@ export const Contacts = () => {
 					</ul>
 				</div>
 			</div>
-			<Modal show={state.showModal} id={id} onClose={() => setState({ showModal: false })} />
+			<Modal show={state.showModal} id={state.id} onClose={() => setState({ showModal: false })} />
 		</div>
 	);
 };

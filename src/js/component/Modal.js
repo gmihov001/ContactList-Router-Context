@@ -37,7 +37,7 @@ export const Modal = props => {
 						</button>
 						<button
 							type="button"
-							onClick={() => actions.deleteContact(this.props.id)}
+							onClick={() => actions.deleteContact(props.id)}
 							className="btn btn-secondary"
 							data-dismiss="modal">
 							Do it!
