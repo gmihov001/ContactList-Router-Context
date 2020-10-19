@@ -1,3 +1,24 @@
-/* 
-    General Styles
-*/
+.list-group-item {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    box-shadow: 2px 3px 10px lightgray;
+}
+
+.add-button {
+    border-radius: 30px;
+}
+
+.add-button:hover {
+    background-color: lightgreen;
+    box-shadow: 2px 3px 10px lightgray;
+}
+
+.float-right i {
+    color: gray;
+}
+
+.float-right i:hover {
+    color: orangered;
+    font-size: 1.3em;
+}
