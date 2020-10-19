@@ -8,6 +8,10 @@ export const Modal = props => {
 		//initialize state here
 	});
 	const { actions, store } = useContext(Context);
+	const handleDoIt = () => {
+		actions.deleteContact(props.id);
+		props.onClose();
+	};
 
 	return (
 		<div className="modal" tabIndex="-1" role="dialog" style={{ display: props.show ? "inline-block" : "none" }}>
@@ -32,14 +36,10 @@ export const Modal = props => {
 						<p>Warning: unknown consequences after this point... Kidding!</p>
 					</div>
 					<div className="modal-footer">
-						<button type="button" className="btn btn-primary">
+						<button type="button" className="btn btn-primary" onClick={() => props.onClose()}>
 							Oh no!
 						</button>
-						<button
-							type="button"
-							onClick={() => actions.deleteContact(props.id)}
-							className="btn btn-secondary"
-							data-dismiss="modal">
+						<button type="button" onClick={handleDoIt} className="btn btn-secondary" data-dismiss="modal">
 							Do it!
 						</button>
 					</div>
