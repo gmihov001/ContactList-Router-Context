@@ -2,7 +2,11 @@
     margin-top: 10px;
     margin-bottom: 10px;
     border: none;
-    box-shadow: 2px 3px 10px lightgray;
+    box-shadow: 3px 4px 10px lightgray;
+}
+
+.list-group-item:hover {
+    box-shadow: 3px 4px 10px lightgreen;
 }
 
 .add-button {
@@ -19,6 +23,6 @@
 }
 
 .float-right i:hover {
-    color: orangered;
+    color: orange;
     font-size: 1.3em;
 }
