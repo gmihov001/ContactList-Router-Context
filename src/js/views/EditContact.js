@@ -6,15 +6,15 @@ import PropTypes from "prop-types";
 export const EditContact = props => {
 	const { store, actions } = useContext(Context);
 
-	var contact = store.agenda.filter(item => item.id == props.match.params.id);
+	var contact = store.agenda.find(item => item.id == props.match.params.id);
 	console.log(contact);
 
 	const [updatedContact, setUpdatedContact] = useState({
-		name: contact[0].full_name,
-		address: contact[0].address,
-		phone: contact[0].phone,
-		email: contact[0].email,
-		id: contact[0].id
+		name: contact.full_name,
+		address: contact.address,
+		phone: contact.phone,
+		email: contact.email,
+		id: contact.id
 	});
 
 	const handleChange = e => {
