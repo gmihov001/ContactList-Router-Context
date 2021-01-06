@@ -11,7 +11,7 @@ export const AddContact = () => {
 		email: null
 	});
 
-	handleChange = e => {
+	const handleChange = e => {
 		setContact({ ...contact, [e.target.name]: e.target.value });
 	};
 
