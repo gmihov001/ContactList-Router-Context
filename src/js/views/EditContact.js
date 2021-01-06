@@ -7,7 +7,6 @@ export const EditContact = props => {
 	const { store, actions } = useContext(Context);
 
 	var contact = store.agenda.find(item => item.id == props.match.params.id);
-	console.log(contact);
 
 	const [updatedContact, setUpdatedContact] = useState({
 		name: contact.full_name,
