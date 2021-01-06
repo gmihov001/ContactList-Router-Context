@@ -3,13 +3,17 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const AddContact = () => {
+	const { store, actions } = useContext(Context);
 	const [contact, setContact] = useState({
 		name: null,
 		address: null,
 		phone: null,
 		email: null
 	});
-	const { actions } = useContext(Context);
+
+	handleChange = e => {
+		setContact({ ...contact, [e.target.name]: e.target.value });
+	};
 
 	return (
 		<div className="container">
@@ -18,12 +22,7 @@ export const AddContact = () => {
 				<form>
 					<div className="form-group">
 						<label>Full Name</label>
-						<input
-							type="text"
-							className="form-control"
-							placeholder="Full Name"
-							onChange={e => setContact({ ...contact, name: e.target.value })}
-						/>
+						<input type="text" className="form-control" placeholder="Full Name" onChange={handleChange} />
 					</div>
 					<div className="form-group">
 						<label>Email</label>
