@@ -22,33 +22,42 @@ export const AddContact = () => {
 				<form>
 					<div className="form-group">
 						<label>Full Name</label>
-						<input type="text" className="form-control" placeholder="Full Name" onChange={handleChange} />
+						<input
+							type="text"
+							name="name"
+							className="form-control"
+							placeholder="Full Name"
+							onChange={handleChange}
+						/>
 					</div>
 					<div className="form-group">
 						<label>Email</label>
 						<input
 							type="email"
+							name="email"
 							className="form-control"
 							placeholder="Enter email"
-							onChange={e => setContact({ ...contact, email: e.target.value })}
+							onChange={handleChange}
 						/>
 					</div>
 					<div className="form-group">
 						<label>Phone</label>
 						<input
 							type="phone"
+							name="phone"
 							className="form-control"
 							placeholder="Enter phone"
-							onChange={e => setContact({ ...contact, phone: e.target.value })}
+							onChange={handleChange}
 						/>
 					</div>
 					<div className="form-group">
 						<label>Address</label>
 						<input
 							type="text"
+							name="address"
 							className="form-control"
 							placeholder="Enter address"
-							onChange={e => setContact({ ...contact, address: e.target.value })}
+							onChange={handleChange}
 						/>
 					</div>
 					<Link to="/">
